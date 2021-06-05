@@ -13,3 +13,6 @@
 color:var(--date-color);
 font-weight: 300;
 }
+.grid__mission{
+  margin-bottom:var(--spacing-1);
+}

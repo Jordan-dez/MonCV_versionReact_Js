@@ -3,6 +3,7 @@ import User from './conponents/User';
 import Skills from './conponents/Skills';
 import Profil from './conponents/Profil';
 import FormationsExperiences from './conponents/FormationsExperiences';
+import Darkmode from './conponents/Darkmode';
 function App() {
   return (
     <div className="App">
@@ -11,6 +12,7 @@ function App() {
     {/**variables css */}
     <div className="grid__container">
       <div className="sidebar">
+        <Darkmode />  
         <User />
         <Skills />
        
