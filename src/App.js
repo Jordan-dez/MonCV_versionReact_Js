@@ -4,15 +4,36 @@ import Skills from './conponents/Skills';
 import Profil from './conponents/Profil';
 import FormationsExperiences from './conponents/FormationsExperiences';
 import Darkmode from './conponents/Darkmode';
+import { Preview, print } from 'react-html2pdf';
+import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
+  
 function App() {
+  const handelGenerateCV = ()=>{
+    let cvTemplate =document.getElementById('cv-print');
+    cvTemplate.setAttribute('style','width:210mm !important');
+    cvTemplate.classList.add('cv-print');
+    cvTemplate.classList.remove('dark');
+    setTimeout(()=>{
+      print("cv","cv-print");
+      cvTemplate.setAttribute('style','width:100% !important');
+      cvTemplate.classList.remove('cv-print');
+    },300)
+  }
   return (
+
+
+  <Preview id={'cv-print'} >
     <div className="App">
       
     {/**react,materiel ui,react-html2pdf */}
     {/**variables css */}
     <div className="grid__container">
       <div className="sidebar">
-        <Darkmode />  
+        <div className="action">
+          <Darkmode />
+          <button onClick={handelGenerateCV}> <PictureAsPdfIcon/></button>
+        </div>
+        
         <User />
         <Skills />
        
@@ -36,6 +57,7 @@ function App() {
     {/** light/dark mode */}
     {/**génération pdf */}
     </div>
+  </Preview>
   );
 }
 

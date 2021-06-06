@@ -1,8 +1,11 @@
 import React from 'react';
-import {useState} from 'react'
-  
+import {useState} from 'react';
+import Brightness3Icon from '@material-ui/icons/Brightness3';
+import Brightness5Icon from '@material-ui/icons/Brightness5';
+
 
 function Darkmode () {
+  const [themeMode,setThemeMode] = useState("light");
   let clickedClass = "clicked";
   const body = document.body;
   const lightTheme = "light";
@@ -13,7 +16,7 @@ function Darkmode () {
     theme = localStorage.getItem('theme');
     console.log(theme);
   }
-  if(theme==lightTheme || theme==darkTheme){
+  if(theme===lightTheme || theme===darkTheme){
     body.classList.add(theme);
   }else{
     body.classList.add(lightTheme);
@@ -30,10 +33,12 @@ function Darkmode () {
       localStorage.setItem("theme","dark");
       theme = darkTheme;
     }
-    console.log("toto");
+    setThemeMode(theme);
   }
     return <button className={theme==="dark"? clickedClass: ""} id="darkMode" onClick={e=>switchTheme(e)}>
-      test
+      {themeMode==="light" || theme==="light" ?(<Brightness3Icon />):( <Brightness5Icon />)}
+      
+     
     </button>
 }
 
